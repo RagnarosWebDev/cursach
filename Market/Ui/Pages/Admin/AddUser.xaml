@@ -1,0 +1,33 @@
+﻿<Window x:Class="Market.Ui.Pages.Admin.AddUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Market.Ui.Pages.Admin"
+        xmlns:converters="clr-namespace:Market.Converters"
+        xmlns:models="clr-namespace:Market.Core.Models"
+        mc:Ignorable="d"
+        Icon="/Images/icon.ico"
+        Title="Добавить пользователя" MinHeight="800" MinWidth="600" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30">Добавить пользователя</TextBlock>
+        
+        <TextBox Grid.Row="1" VerticalAlignment="Center" FontSize="20" Margin="30, 0" Text="{Binding Path=User.Login, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="2" VerticalAlignment="Center" FontSize="20" Margin="30, 0" Text="{Binding Path=User.Password, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="30, 0" Text="{Binding Path=User.Email, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="4" VerticalAlignment="Center" FontSize="20" Margin="30, 0" Text="{Binding Path=User.FIO, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"></TextBox>
+        <ComboBox ItemsSource="{converters:EnumToCollectionConverter {x:Type models:Roles}}" DisplayMemberPath="DisplayName" SelectedValuePath="Value" Grid.Row="5" VerticalAlignment="Center" FontSize="20" Margin="30, 0" SelectedValue="{Binding Path=User.Role, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"></ComboBox>
+        
+        <Button Grid.Row="6" VerticalAlignment="Center" Margin="30,0" FontSize="25">Добавить</Button>
+    </Grid>
+</Window>

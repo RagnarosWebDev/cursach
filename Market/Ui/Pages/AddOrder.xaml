@@ -1,0 +1,34 @@
+﻿<Window x:Class="Market.Ui.Pages.AddOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Market.Ui.Pages"
+        mc:Ignorable="d"
+        Icon="/Images/icon.ico"
+        Title="Добавить заказ" Height="650" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30">Добавить заказ</TextBlock>
+        
+        <DataGrid Margin="30,0 " Grid.Row="1" ItemsSource="{Binding Path=OrderItems, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Width="1*" Binding="{Binding Path=Product.Name}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Width="1*" Binding="{Binding Path=Count}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <TextBox Grid.Row="2" VerticalAlignment="Center" FontSize="20" Margin="30, 0" Text="{Binding Path=FIO, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="30, 0" Text="{Binding Path=Phone, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"></TextBox>
+        <Button Grid.Row="4" VerticalAlignment="Center" Margin="30,0" FontSize="25" Click="AddOrderClicked">Добавить</Button>
+
+    </Grid>
+</Window>
